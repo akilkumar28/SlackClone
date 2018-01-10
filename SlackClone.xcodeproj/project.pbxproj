@@ -18,6 +18,7 @@
 		8986ACA62006315900D4E325 /* GradientVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8986ACA52006315900D4E325 /* GradientVIew.swift */; };
 		8986ACA920063D9B00D4E325 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8986ACA820063D9B00D4E325 /* Constants.swift */; };
 		8986ACAB200643B000D4E325 /* LogInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8986ACAA200643B000D4E325 /* LogInVC.swift */; };
+		89EBD47A200696DE0096B3D0 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EBD479200696DE0096B3D0 /* SignUpVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		8986ACA52006315900D4E325 /* GradientVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientVIew.swift; sourceTree = "<group>"; };
 		8986ACA820063D9B00D4E325 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8986ACAA200643B000D4E325 /* LogInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInVC.swift; sourceTree = "<group>"; };
+		89EBD479200696DE0096B3D0 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		CE5DF3D278F4B08A5668A3C2 /* Pods_SlackClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SlackClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -102,6 +104,7 @@
 				8986AC8B200615B700D4E325 /* ChatVC.swift */,
 				8986ACA32006250200D4E325 /* ChannelVC.swift */,
 				8986ACAA200643B000D4E325 /* LogInVC.swift */,
+				89EBD479200696DE0096B3D0 /* SignUpVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89EBD47A200696DE0096B3D0 /* SignUpVC.swift in Sources */,
 				8986ACA42006250200D4E325 /* ChannelVC.swift in Sources */,
 				8986ACA920063D9B00D4E325 /* Constants.swift in Sources */,
 				8986AC8C200615B700D4E325 /* ChatVC.swift in Sources */,

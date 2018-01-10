@@ -29,6 +29,7 @@ class LogInVC: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func signUpBtnTapped(_ sender: Any) {
+        performSegue(withIdentifier: TO_SIGNUPVC, sender: nil)
     }
     
     
