@@ -13,13 +13,13 @@ class GradientVIew: UIView {
 
     @IBInspectable var topColor:UIColor = UIColor.red {
         didSet{
-            self.setNeedsLayout()
+            self.layoutIfNeeded()
         }
     }
     
     @IBInspectable var bottomColor:UIColor = UIColor.black {
         didSet{
-            self.setNeedsLayout()
+            self.layoutIfNeeded()
         }
     }
     
