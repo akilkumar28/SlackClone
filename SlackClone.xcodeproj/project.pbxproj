@@ -13,6 +13,7 @@
 		8986AC8F200615B700D4E325 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8986AC8D200615B700D4E325 /* Main.storyboard */; };
 		8986AC91200615B700D4E325 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8986AC90200615B700D4E325 /* Assets.xcassets */; };
 		8986AC94200615B700D4E325 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8986AC92200615B700D4E325 /* LaunchScreen.storyboard */; };
+		8986AC9E2006216400D4E325 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8986AC9D2006216400D4E325 /* SWRevealViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,9 @@
 		8986AC90200615B700D4E325 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8986AC93200615B700D4E325 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8986AC95200615B700D4E325 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8986AC9B2006216300D4E325 /* SlackClone-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SlackClone-Bridging-Header.h"; sourceTree = "<group>"; };
+		8986AC9C2006216400D4E325 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		8986AC9D2006216400D4E325 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		CE5DF3D278F4B08A5668A3C2 /* Pods_SlackClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SlackClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -69,12 +73,15 @@
 		8986AC88200615B700D4E325 /* SlackClone */ = {
 			isa = PBXGroup;
 			children = (
+				8986AC9C2006216400D4E325 /* SWRevealViewController.h */,
+				8986AC9D2006216400D4E325 /* SWRevealViewController.m */,
 				8986AC89200615B700D4E325 /* AppDelegate.swift */,
 				8986AC8B200615B700D4E325 /* ViewController.swift */,
 				8986AC8D200615B700D4E325 /* Main.storyboard */,
 				8986AC90200615B700D4E325 /* Assets.xcassets */,
 				8986AC92200615B700D4E325 /* LaunchScreen.storyboard */,
 				8986AC95200615B700D4E325 /* Info.plist */,
+				8986AC9B2006216300D4E325 /* SlackClone-Bridging-Header.h */,
 			);
 			path = SlackClone;
 			sourceTree = "<group>";
@@ -123,6 +130,7 @@
 				TargetAttributes = {
 					8986AC85200615B700D4E325 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -213,6 +221,7 @@
 			files = (
 				8986AC8C200615B700D4E325 /* ViewController.swift in Sources */,
 				8986AC8A200615B700D4E325 /* AppDelegate.swift in Sources */,
+				8986AC9E2006216400D4E325 /* SWRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,11 +359,14 @@
 			baseConfigurationReference = 428F34DE7958622A2769AB64 /* Pods-SlackClone.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SlackClone/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = akilkumar28.SlackClone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SlackClone/SlackClone-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -365,11 +377,13 @@
 			baseConfigurationReference = 124E5BC190DD6AE231BF9B1B /* Pods-SlackClone.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SlackClone/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = akilkumar28.SlackClone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SlackClone/SlackClone-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
