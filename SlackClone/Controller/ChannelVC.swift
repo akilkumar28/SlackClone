@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ChannelVC.swift
 //  SlackClone
 //
 //  Created by AKIL KUMAR THOTA on 1/10/18.
@@ -8,12 +8,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ChannelVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
+        self.revealViewController().rearViewRevealWidth = self.view.frame.width - 60
+
     }
+    
 
 }
-

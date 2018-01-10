@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		875AAEB133175870BA101B3D /* Pods_SlackClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5DF3D278F4B08A5668A3C2 /* Pods_SlackClone.framework */; };
 		8986AC8A200615B700D4E325 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8986AC89200615B700D4E325 /* AppDelegate.swift */; };
-		8986AC8C200615B700D4E325 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8986AC8B200615B700D4E325 /* ViewController.swift */; };
+		8986AC8C200615B700D4E325 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8986AC8B200615B700D4E325 /* ChatVC.swift */; };
 		8986AC8F200615B700D4E325 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8986AC8D200615B700D4E325 /* Main.storyboard */; };
 		8986AC91200615B700D4E325 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8986AC90200615B700D4E325 /* Assets.xcassets */; };
 		8986AC94200615B700D4E325 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8986AC92200615B700D4E325 /* LaunchScreen.storyboard */; };
 		8986AC9E2006216400D4E325 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8986AC9D2006216400D4E325 /* SWRevealViewController.m */; };
+		8986ACA42006250200D4E325 /* ChannelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8986ACA32006250200D4E325 /* ChannelVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,7 +22,7 @@
 		428F34DE7958622A2769AB64 /* Pods-SlackClone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlackClone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SlackClone/Pods-SlackClone.debug.xcconfig"; sourceTree = "<group>"; };
 		8986AC86200615B700D4E325 /* SlackClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlackClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8986AC89200615B700D4E325 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8986AC8B200615B700D4E325 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8986AC8B200615B700D4E325 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		8986AC8E200615B700D4E325 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8986AC90200615B700D4E325 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8986AC93200615B700D4E325 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -29,6 +30,7 @@
 		8986AC9B2006216300D4E325 /* SlackClone-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SlackClone-Bridging-Header.h"; sourceTree = "<group>"; };
 		8986AC9C2006216400D4E325 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		8986AC9D2006216400D4E325 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		8986ACA32006250200D4E325 /* ChannelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelVC.swift; sourceTree = "<group>"; };
 		CE5DF3D278F4B08A5668A3C2 /* Pods_SlackClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SlackClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -73,10 +75,11 @@
 		8986AC88200615B700D4E325 /* SlackClone */ = {
 			isa = PBXGroup;
 			children = (
-				8986AC9C2006216400D4E325 /* SWRevealViewController.h */,
-				8986AC9D2006216400D4E325 /* SWRevealViewController.m */,
+				8986ACA1200622DE00D4E325 /* Mode */,
+				8986ACA0200622DB00D4E325 /* View */,
+				8986AC9F200622D900D4E325 /* Controller */,
+				8986ACA2200622ED00D4E325 /* Supporting files */,
 				8986AC89200615B700D4E325 /* AppDelegate.swift */,
-				8986AC8B200615B700D4E325 /* ViewController.swift */,
 				8986AC8D200615B700D4E325 /* Main.storyboard */,
 				8986AC90200615B700D4E325 /* Assets.xcassets */,
 				8986AC92200615B700D4E325 /* LaunchScreen.storyboard */,
@@ -84,6 +87,38 @@
 				8986AC9B2006216300D4E325 /* SlackClone-Bridging-Header.h */,
 			);
 			path = SlackClone;
+			sourceTree = "<group>";
+		};
+		8986AC9F200622D900D4E325 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8986AC8B200615B700D4E325 /* ChatVC.swift */,
+				8986ACA32006250200D4E325 /* ChannelVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8986ACA0200622DB00D4E325 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8986ACA1200622DE00D4E325 /* Mode */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Mode;
+			sourceTree = "<group>";
+		};
+		8986ACA2200622ED00D4E325 /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				8986AC9C2006216400D4E325 /* SWRevealViewController.h */,
+				8986AC9D2006216400D4E325 /* SWRevealViewController.m */,
+			);
+			path = "Supporting files";
 			sourceTree = "<group>";
 		};
 		F5A4B2EE75E4B373E2B9CD24 /* Pods */ = {
@@ -219,7 +254,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8986AC8C200615B700D4E325 /* ViewController.swift in Sources */,
+				8986ACA42006250200D4E325 /* ChannelVC.swift in Sources */,
+				8986AC8C200615B700D4E325 /* ChatVC.swift in Sources */,
 				8986AC8A200615B700D4E325 /* AppDelegate.swift in Sources */,
 				8986AC9E2006216400D4E325 /* SWRevealViewController.m in Sources */,
 			);
