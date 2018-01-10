@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		875AAEB133175870BA101B3D /* Pods_SlackClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5DF3D278F4B08A5668A3C2 /* Pods_SlackClone.framework */; };
 		8986AC8A200615B700D4E325 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8986AC89200615B700D4E325 /* AppDelegate.swift */; };
 		8986AC8C200615B700D4E325 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8986AC8B200615B700D4E325 /* ViewController.swift */; };
 		8986AC8F200615B700D4E325 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8986AC8D200615B700D4E325 /* Main.storyboard */; };
@@ -15,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		124E5BC190DD6AE231BF9B1B /* Pods-SlackClone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlackClone.release.xcconfig"; path = "Pods/Target Support Files/Pods-SlackClone/Pods-SlackClone.release.xcconfig"; sourceTree = "<group>"; };
+		428F34DE7958622A2769AB64 /* Pods-SlackClone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlackClone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SlackClone/Pods-SlackClone.debug.xcconfig"; sourceTree = "<group>"; };
 		8986AC86200615B700D4E325 /* SlackClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlackClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8986AC89200615B700D4E325 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8986AC8B200615B700D4E325 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +25,7 @@
 		8986AC90200615B700D4E325 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8986AC93200615B700D4E325 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8986AC95200615B700D4E325 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE5DF3D278F4B08A5668A3C2 /* Pods_SlackClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SlackClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +33,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				875AAEB133175870BA101B3D /* Pods_SlackClone.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10FB48CB2E47ACB201440A2B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE5DF3D278F4B08A5668A3C2 /* Pods_SlackClone.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8986AC7D200615B700D4E325 = {
 			isa = PBXGroup;
 			children = (
 				8986AC88200615B700D4E325 /* SlackClone */,
 				8986AC87200615B700D4E325 /* Products */,
+				F5A4B2EE75E4B373E2B9CD24 /* Pods */,
+				10FB48CB2E47ACB201440A2B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +79,15 @@
 			path = SlackClone;
 			sourceTree = "<group>";
 		};
+		F5A4B2EE75E4B373E2B9CD24 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				428F34DE7958622A2769AB64 /* Pods-SlackClone.debug.xcconfig */,
+				124E5BC190DD6AE231BF9B1B /* Pods-SlackClone.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8986AC98200615B700D4E325 /* Build configuration list for PBXNativeTarget "SlackClone" */;
 			buildPhases = (
+				A3DBBCA6CA6E6F93FFAFDFEA /* [CP] Check Pods Manifest.lock */,
 				8986AC82200615B700D4E325 /* Sources */,
 				8986AC83200615B700D4E325 /* Frameworks */,
 				8986AC84200615B700D4E325 /* Resources */,
+				DCDCFFF8C147F11279884A81 /* [CP] Embed Pods Frameworks */,
+				571548AD331AB717E8E36E79 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -130,6 +157,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		571548AD331AB717E8E36E79 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SlackClone/Pods-SlackClone-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A3DBBCA6CA6E6F93FFAFDFEA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DCDCFFF8C147F11279884A81 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SlackClone/Pods-SlackClone-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8986AC82200615B700D4E325 /* Sources */ = {
@@ -272,6 +347,7 @@
 		};
 		8986AC99200615B700D4E325 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 428F34DE7958622A2769AB64 /* Pods-SlackClone.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -286,6 +362,7 @@
 		};
 		8986AC9A200615B700D4E325 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 124E5BC190DD6AE231BF9B1B /* Pods-SlackClone.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
