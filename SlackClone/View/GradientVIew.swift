@@ -8,21 +8,22 @@
 
 import UIKit
 
-@IBDesignable
 class GradientVIew: UIView {
-
-    @IBInspectable var topColor:UIColor = UIColor.red {
+    
+    //MARK:- Properties
+    var topColor:UIColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1) {
         didSet{
-            self.layoutIfNeeded()
+            self.setNeedsLayout()
         }
     }
     
-    @IBInspectable var bottomColor:UIColor = UIColor.black {
+    var bottomColor:UIColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) {
         didSet{
-            self.layoutIfNeeded()
+            self.setNeedsLayout()
         }
     }
     
+    //MARK:- Functions
     override func layoutSubviews() {
         
         let gradientLayer = CAGradientLayer()
