@@ -15,6 +15,7 @@
 		8986AC94200615B700D4E325 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8986AC92200615B700D4E325 /* LaunchScreen.storyboard */; };
 		8986AC9E2006216400D4E325 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8986AC9D2006216400D4E325 /* SWRevealViewController.m */; };
 		8986ACA42006250200D4E325 /* ChannelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8986ACA32006250200D4E325 /* ChannelVC.swift */; };
+		8986ACA62006315900D4E325 /* GradientVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8986ACA52006315900D4E325 /* GradientVIew.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		8986AC9C2006216400D4E325 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		8986AC9D2006216400D4E325 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		8986ACA32006250200D4E325 /* ChannelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelVC.swift; sourceTree = "<group>"; };
+		8986ACA52006315900D4E325 /* GradientVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientVIew.swift; sourceTree = "<group>"; };
 		CE5DF3D278F4B08A5668A3C2 /* Pods_SlackClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SlackClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -101,6 +103,7 @@
 		8986ACA0200622DB00D4E325 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8986ACA52006315900D4E325 /* GradientVIew.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 			files = (
 				8986ACA42006250200D4E325 /* ChannelVC.swift in Sources */,
 				8986AC8C200615B700D4E325 /* ChatVC.swift in Sources */,
+				8986ACA62006315900D4E325 /* GradientVIew.swift in Sources */,
 				8986AC8A200615B700D4E325 /* AppDelegate.swift in Sources */,
 				8986AC9E2006216400D4E325 /* SWRevealViewController.m in Sources */,
 			);
