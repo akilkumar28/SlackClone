@@ -10,6 +10,10 @@ import Foundation
 
 typealias CompletionHandler = (_ Success:Bool) -> ()
 
+//MARK:- Reuse Id
+
+let collectionViewCellID = "collectionCell"
+
 //MARK:- URL
 let BASE_URL = "https://slackclone28.herokuapp.com/v1/"
 let URL_REGISTER = "\(BASE_URL)account/register"
@@ -20,6 +24,7 @@ let URL_CREATE_USER = "\(BASE_URL)user/add"
 let TO_LOGIN = "toLogin"
 let TO_SIGNUPVC = "toSignUpVC"
 let UNWIND_SEGUE = "unwindSegue"
+let TO_AVATAR_PICKER = "toAvatarPicker"
 
 //MARK:- UserDefaults Tokens
 let TOKEN_KEY = "token"

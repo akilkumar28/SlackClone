@@ -43,6 +43,7 @@ class SignUpVC: UIViewController {
     }
     
     @IBAction func chooseAvatartBtnTapped(_ sender: Any) {
+        performSegue(withIdentifier: TO_AVATAR_PICKER, sender: nil)
     }
     @IBAction func generateBackgroundColorTapped(_ sender: Any) {
     }
