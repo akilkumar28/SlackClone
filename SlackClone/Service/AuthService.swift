@@ -115,6 +115,7 @@ class AuthService {
                 let javatarName = json["avatarName"].stringValue
                 let javatarColor = json["avatarColor"].stringValue
                 UserDataService.sharedInstance.setUserData(id: jid, color: javatarColor, avatarName: javatarName, email: jemail, name: jname)
+                AuthService.sharedInstance.isLoggedIn = true
                 completion(true)
             }else{
                 debugPrint(response.result.error as Any)

@@ -73,6 +73,7 @@ class SignUpVC: UIViewController {
         let b = CGFloat(arc4random_uniform(255)) / 255
         
         let color = UIColor(red: r, green: g, blue: b, alpha: 1)
+        self.avatarColor = "[\(r),\(g),\(b),\(1)]"
         UIView.animate(withDuration: 0.2) {
             self.avatarImageIcon.backgroundColor = color
         }
@@ -94,7 +95,8 @@ class SignUpVC: UIViewController {
                             if success{
                                 self.activityIndicator.stopAnimating()
                                 self.performSegue(withIdentifier: UNWIND_SEGUE, sender: nil)
-                                NotificationCenter.default.post(NOTIF_USER_DATA_CHANGED)
+                                NotificationCenter.default.post(name: NOTIF_USER_DATA_CHANGED, object: nil)
+                                
                             }else{
                                 print("creating unsuccessfull")
                             }
