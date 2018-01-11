@@ -30,6 +30,15 @@ class SignUpVC: UIViewController {
        avatarImageIcon.addGestureRecognizer(tapGesture)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if UserDataService.sharedInstance.avatarName != "" {
+            self.avatarImageIcon.image = UIImage(named: UserDataService.sharedInstance.avatarName)
+            self.avatarName = UserDataService.sharedInstance.avatarName
+        }
+    }
+    
     //MARK:- Functions
     
     @objc func imageTapped(){

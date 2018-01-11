@@ -37,7 +37,7 @@ class AvatarPickerVC: UIViewController {
     }
 }
 
-extension AvatarPickerVC:UICollectionViewDelegate,UICollectionViewDataSource {
+extension AvatarPickerVC:UICollectionViewDelegate,UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 28
@@ -52,4 +52,11 @@ extension AvatarPickerVC:UICollectionViewDelegate,UICollectionViewDataSource {
             return AvatarCell()
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let updatedAvatarName = "\(imageNames[segmentControl.selectedSegmentIndex])\(indexPath.row)"
+        UserDataService.sharedInstance.updateAvatarName(avatarName: updatedAvatarName)
+        self.dismiss(animated: true, completion: nil)
+    }
+
 }
