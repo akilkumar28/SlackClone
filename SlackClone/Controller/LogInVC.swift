@@ -24,6 +24,7 @@ class LogInVC: UIViewController {
     
     //MARK:- IBActions
     @IBAction func loginInTapped(_ sender: Any) {
+        
     }
     @IBAction func closeBtnTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)

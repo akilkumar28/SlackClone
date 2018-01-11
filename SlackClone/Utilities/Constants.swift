@@ -13,6 +13,7 @@ typealias CompletionHandler = (_ Success:Bool) -> ()
 //MARK:- URL
 let BASE_URL = "https://slackclone28.herokuapp.com/v1/"
 let URL_REGISTER = "\(BASE_URL)account/register"
+let URL_LOGIN = "\(BASE_URL)account/login"
 
 //MARK:- Seagues
 let TO_LOGIN = "toLogin"

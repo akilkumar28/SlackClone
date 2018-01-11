@@ -46,9 +46,17 @@ class SignUpVC: UIViewController {
         AuthService.sharedInstance.registerUser(email: email, password: password) { (success) in
             if success {
                 print("registered user")
+                AuthService.sharedInstance.loginUser(email: email, password: password) { (success) in
+                    if success{
+                        print("logged in")
+                    }else{
+                        print("log in failed")
+                    }
+                }
             }else{
                 print("failure")
             }
         }
+        
     }
 }
