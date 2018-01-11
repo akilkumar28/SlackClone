@@ -122,9 +122,6 @@ class AuthService {
                 completion(false)
             }
         }
-        
-        
-        
-    }
-    
+
+    }    
 }

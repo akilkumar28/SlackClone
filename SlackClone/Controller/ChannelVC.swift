@@ -43,11 +43,23 @@ class ChannelVC: UIViewController {
     //MARK:- IBActions
     
     @IBAction func loginBtnTapped(_ sender: UIButton) {
-        performSegue(withIdentifier: TO_LOGIN, sender: nil)
+        if AuthService.sharedInstance.isLoggedIn{
+            
+            let profileVC = ProfileViewVC()
+            profileVC.modalPresentationStyle = .custom
+            present(profileVC, animated: true, completion: nil)
+            
+        }else{
+            performSegue(withIdentifier: TO_LOGIN, sender: nil)
+        }
     }
     
     @IBAction func unwindFromSignUpVC(sender:UIStoryboardSegue){
         
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
 

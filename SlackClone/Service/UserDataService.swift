@@ -64,4 +64,16 @@ class UserDataService {
 
     }
     
+    func logoutUser(){
+        AuthService.sharedInstance.isLoggedIn = false
+        AuthService.sharedInstance.authToken = ""
+        AuthService.sharedInstance.userEmail = ""
+        id = ""
+        avatarColor = ""
+        avatarName = ""
+        email = ""
+        name = ""
+        
+    }
+    
 }

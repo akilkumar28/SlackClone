@@ -25,6 +25,8 @@
 		89EBD47A200696DE0096B3D0 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EBD479200696DE0096B3D0 /* SignUpVC.swift */; };
 		89EBD47D200741030096B3D0 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EBD47C200741030096B3D0 /* AuthService.swift */; };
 		89EBD47F200755B90096B3D0 /* RoundedButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EBD47E200755B90096B3D0 /* RoundedButtons.swift */; };
+		89F154352007CC2C002B89CD /* ProfileViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F154332007CC2C002B89CD /* ProfileViewVC.swift */; };
+		89F154362007CC2C002B89CD /* ProfileViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89F154342007CC2C002B89CD /* ProfileViewVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +53,8 @@
 		89EBD479200696DE0096B3D0 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		89EBD47C200741030096B3D0 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		89EBD47E200755B90096B3D0 /* RoundedButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButtons.swift; sourceTree = "<group>"; };
+		89F154332007CC2C002B89CD /* ProfileViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewVC.swift; sourceTree = "<group>"; };
+		89F154342007CC2C002B89CD /* ProfileViewVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewVC.xib; sourceTree = "<group>"; };
 		CE5DF3D278F4B08A5668A3C2 /* Pods_SlackClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SlackClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -95,6 +99,7 @@
 		8986AC88200615B700D4E325 /* SlackClone */ = {
 			isa = PBXGroup;
 			children = (
+				89F154372007D471002B89CD /* XIBs */,
 				89EBD47B200740F40096B3D0 /* Service */,
 				8986ACA720063D8A00D4E325 /* Utilities */,
 				8986ACA1200622DE00D4E325 /* Mode */,
@@ -119,6 +124,7 @@
 				8986ACAA200643B000D4E325 /* LogInVC.swift */,
 				89EBD479200696DE0096B3D0 /* SignUpVC.swift */,
 				892DD73F20077F3D001CF044 /* AvatarPickerVC.swift */,
+				89F154332007CC2C002B89CD /* ProfileViewVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -165,6 +171,14 @@
 				892DD73D20076972001CF044 /* UserDataService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		89F154372007D471002B89CD /* XIBs */ = {
+			isa = PBXGroup;
+			children = (
+				89F154342007CC2C002B89CD /* ProfileViewVC.xib */,
+			);
+			path = XIBs;
 			sourceTree = "<group>";
 		};
 		F5A4B2EE75E4B373E2B9CD24 /* Pods */ = {
@@ -242,6 +256,7 @@
 				8986AC94200615B700D4E325 /* LaunchScreen.storyboard in Resources */,
 				8986AC91200615B700D4E325 /* Assets.xcassets in Resources */,
 				8986AC8F200615B700D4E325 /* Main.storyboard in Resources */,
+				89F154362007CC2C002B89CD /* ProfileViewVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,6 +318,7 @@
 				89EBD47A200696DE0096B3D0 /* SignUpVC.swift in Sources */,
 				892DD74020077F3D001CF044 /* AvatarPickerVC.swift in Sources */,
 				89EBD47F200755B90096B3D0 /* RoundedButtons.swift in Sources */,
+				89F154352007CC2C002B89CD /* ProfileViewVC.swift in Sources */,
 				8986ACA42006250200D4E325 /* ChannelVC.swift in Sources */,
 				892DD73E20076972001CF044 /* UserDataService.swift in Sources */,
 				8986ACA920063D9B00D4E325 /* Constants.swift in Sources */,
