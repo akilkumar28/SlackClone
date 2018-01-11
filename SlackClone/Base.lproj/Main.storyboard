@@ -320,8 +320,7 @@
                                 </constraints>
                                 <state key="normal" image="closeButton"/>
                                 <connections>
-                                    <action selector="closeBtnTapped:" destination="2eT-f1-taL" eventType="touchUpInside" id="MRW-dM-dU6"/>
-                                    <segue destination="jVc-dl-MII" kind="unwind" unwindAction="unwindFromSignUpVCWithSender:" id="1yJ-et-m1R"/>
+                                    <action selector="closeBtnTapped:" destination="Wtf-H2-fCe" eventType="touchUpInside" id="pcc-3x-jaz"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7AZ-Pi-hFG">
@@ -471,6 +470,7 @@
                         <outlet property="emailTxtField" destination="QSX-M2-Kca" id="Rle-pf-kmd"/>
                         <outlet property="passwordTxtField" destination="8qC-vr-zUn" id="tzS-qK-hB6"/>
                         <outlet property="usernameTxtField" destination="Oka-R5-cLm" id="XtW-Ra-p1D"/>
+                        <segue destination="jVc-dl-MII" kind="unwind" identifier="unwindSegue" unwindAction="unwindFromSignUpVCWithSender:" id="dev-EK-fhT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DEU-xh-fRt" userLabel="First Responder" sceneMemberID="firstResponder"/>

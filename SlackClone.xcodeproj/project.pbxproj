@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		875AAEB133175870BA101B3D /* Pods_SlackClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5DF3D278F4B08A5668A3C2 /* Pods_SlackClone.framework */; };
+		892DD73E20076972001CF044 /* UserDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892DD73D20076972001CF044 /* UserDataService.swift */; };
 		8986AC8A200615B700D4E325 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8986AC89200615B700D4E325 /* AppDelegate.swift */; };
 		8986AC8C200615B700D4E325 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8986AC8B200615B700D4E325 /* ChatVC.swift */; };
 		8986AC8F200615B700D4E325 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8986AC8D200615B700D4E325 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		124E5BC190DD6AE231BF9B1B /* Pods-SlackClone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlackClone.release.xcconfig"; path = "Pods/Target Support Files/Pods-SlackClone/Pods-SlackClone.release.xcconfig"; sourceTree = "<group>"; };
 		428F34DE7958622A2769AB64 /* Pods-SlackClone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlackClone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SlackClone/Pods-SlackClone.debug.xcconfig"; sourceTree = "<group>"; };
+		892DD73D20076972001CF044 /* UserDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataService.swift; sourceTree = "<group>"; };
 		8986AC86200615B700D4E325 /* SlackClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlackClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8986AC89200615B700D4E325 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8986AC8B200615B700D4E325 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				89EBD47C200741030096B3D0 /* AuthService.swift */,
+				892DD73D20076972001CF044 /* UserDataService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				89EBD47A200696DE0096B3D0 /* SignUpVC.swift in Sources */,
 				89EBD47F200755B90096B3D0 /* RoundedButtons.swift in Sources */,
 				8986ACA42006250200D4E325 /* ChannelVC.swift in Sources */,
+				892DD73E20076972001CF044 /* UserDataService.swift in Sources */,
 				8986ACA920063D9B00D4E325 /* Constants.swift in Sources */,
 				89EBD47D200741030096B3D0 /* AuthService.swift in Sources */,
 				8986AC8C200615B700D4E325 /* ChatVC.swift in Sources */,

@@ -17,6 +17,11 @@ class SignUpVC: UIViewController {
     @IBOutlet weak var passwordTxtField: UITextField!
     @IBOutlet weak var avatarImageIcon: UIImageView!
     
+    //MARK:- Variable
+    
+    var avatarName = "profileDefault"
+    var avatarColor = "[0.5,0.5,0.5,1]"
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +38,9 @@ class SignUpVC: UIViewController {
 
     //MARK:- IBActions
 
+    @IBAction func closeBtnTapped(_ sender: Any) {
+        performSegue(withIdentifier: UNWIND_SEGUE, sender: nil)
+    }
     
     @IBAction func chooseAvatartBtnTapped(_ sender: Any) {
     }
@@ -43,12 +51,21 @@ class SignUpVC: UIViewController {
         
         guard let email = emailTxtField.text, emailTxtField.text != "" else {return}
         guard let password = passwordTxtField.text, passwordTxtField.text != "" else{return}
+        guard let userName = usernameTxtField.text, usernameTxtField.text != "" else{return}
         AuthService.sharedInstance.registerUser(email: email, password: password) { (success) in
             if success {
                 print("registered user")
                 AuthService.sharedInstance.loginUser(email: email, password: password) { (success) in
                     if success{
                         print("logged in")
+                        AuthService.sharedInstance.createUser(name: userName, email: email, avatarName: self.avatarName, avatarColor: self.avatarColor, completion: { (success) in
+                            if success{
+                                self.performSegue(withIdentifier: UNWIND_SEGUE, sender: nil)
+                                
+                            }else{
+                                print("creating unsuccessfull")
+                            }
+                        })
                     }else{
                         print("log in failed")
                     }
