@@ -8,5 +8,17 @@
 
 import Foundation
 
+typealias CompletionHandler = (_ Success:Bool) -> ()
+
+//MARK:- URL
+let BASE_URL = "https://slackclone28.herokuapp.com/v1/"
+let URL_REGISTER = "\(BASE_URL)account/register"
+
+//MARK:- Seagues
 let TO_LOGIN = "toLogin"
 let TO_SIGNUPVC = "toSignUpVC"
+
+//MARK:- UserDefaults Tokens
+let TOKEN_KEY = "token"
+let LOGGED_IN_KEY = "loggedIn"
+let USER_EMAIL_KEY = "userEmail"

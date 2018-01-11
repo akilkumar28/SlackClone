@@ -40,5 +40,15 @@ class SignUpVC: UIViewController {
     }
     
     @IBAction func createAccountTapped(_ sender: Any) {
+        
+        guard let email = emailTxtField.text, emailTxtField.text != "" else {return}
+        guard let password = passwordTxtField.text, passwordTxtField.text != "" else{return}
+        AuthService.sharedInstance.registerUser(email: email, password: password) { (success) in
+            if success {
+                print("registered user")
+            }else{
+                print("failure")
+            }
+        }
     }
 }
