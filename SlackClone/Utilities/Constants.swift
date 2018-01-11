@@ -10,6 +10,11 @@ import Foundation
 
 typealias CompletionHandler = (_ Success:Bool) -> ()
 
+
+//MARK:- Notification constants
+
+let NOTIF_USER_DATA_CHANGED = Notification.Name("notificationUserDataChanged")
+
 //MARK:- Reuse Id
 
 let collectionViewCellID = "collectionCell"

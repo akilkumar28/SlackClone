@@ -16,11 +16,13 @@ class SignUpVC: UIViewController {
     @IBOutlet weak var emailTxtField: UITextField!
     @IBOutlet weak var passwordTxtField: UITextField!
     @IBOutlet weak var avatarImageIcon: UIImageView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     //MARK:- Variable
     
     var avatarName = "profileDefault"
     var avatarColor = "[0.5,0.5,0.5,1]"
+    var bgColor:UIColor?
     
     
     override func viewDidLoad() {
@@ -36,6 +38,17 @@ class SignUpVC: UIViewController {
         if UserDataService.sharedInstance.avatarName != "" {
             self.avatarImageIcon.image = UIImage(named: UserDataService.sharedInstance.avatarName)
             self.avatarName = UserDataService.sharedInstance.avatarName
+            if bgColor == nil{
+                if self.avatarName.contains("light") {
+                    self.avatarImageIcon.backgroundColor = UIColor.lightGray
+                    self.bgColor = UIColor.lightGray
+                }else{
+                    self.avatarImageIcon.backgroundColor = UIColor.white
+                    self.bgColor = UIColor.white
+                }
+            }else{
+                self.avatarImageIcon.backgroundColor = bgColor
+            }
         }
     }
     
@@ -55,10 +68,19 @@ class SignUpVC: UIViewController {
         performSegue(withIdentifier: TO_AVATAR_PICKER, sender: nil)
     }
     @IBAction func generateBackgroundColorTapped(_ sender: Any) {
+        let r = CGFloat(arc4random_uniform(255)) / 255
+        let g = CGFloat(arc4random_uniform(255)) / 255
+        let b = CGFloat(arc4random_uniform(255)) / 255
+        
+        let color = UIColor(red: r, green: g, blue: b, alpha: 1)
+        UIView.animate(withDuration: 0.2) {
+            self.avatarImageIcon.backgroundColor = color
+        }
+        self.bgColor = color
     }
     
     @IBAction func createAccountTapped(_ sender: Any) {
-        
+        activityIndicator.startAnimating()
         guard let email = emailTxtField.text, emailTxtField.text != "" else {return}
         guard let password = passwordTxtField.text, passwordTxtField.text != "" else{return}
         guard let userName = usernameTxtField.text, usernameTxtField.text != "" else{return}
@@ -70,8 +92,9 @@ class SignUpVC: UIViewController {
                         print("logged in")
                         AuthService.sharedInstance.createUser(name: userName, email: email, avatarName: self.avatarName, avatarColor: self.avatarColor, completion: { (success) in
                             if success{
+                                self.activityIndicator.stopAnimating()
                                 self.performSegue(withIdentifier: UNWIND_SEGUE, sender: nil)
-                                
+                                NotificationCenter.default.post(NOTIF_USER_DATA_CHANGED)
                             }else{
                                 print("creating unsuccessfull")
                             }
@@ -85,5 +108,9 @@ class SignUpVC: UIViewController {
             }
         }
         
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 }
