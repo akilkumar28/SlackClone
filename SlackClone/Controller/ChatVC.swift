@@ -12,6 +12,7 @@ class ChatVC: UIViewController {
 
     //MARK:- IBOutlets
     @IBOutlet weak var hamBurgerBtn: UIButton!
+    @IBOutlet weak var channelNameLbl: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,7 @@ class ChatVC: UIViewController {
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
         
+        NotificationCenter.default.addObserver(self, selector: #selector(channelSelected), name: NOTIF_CHANNEL_SELECTED, object: nil)
         
         if AuthService.sharedInstance.isLoggedIn {
             AuthService.sharedInstance.findUserByEmail(completion: { (Success) in
@@ -29,11 +31,19 @@ class ChatVC: UIViewController {
             })
             MessagingService.sharedInstance.getAllChannels(completion: { (Success) in
                 if Success {
-                    
+                    print("getting all channels here")
                 }
             })
         }
 }
+    
+    //MARK:- Functions
+    
+    @objc func channelSelected(){
+        
+        channelNameLbl.text = "#\(MessagingService.sharedInstance.selectedChannel?.channelTitle ?? "Name not found")"
+        
+    }
 
 }
 

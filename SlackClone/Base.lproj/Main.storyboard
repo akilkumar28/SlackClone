@@ -82,6 +82,7 @@
                         <viewLayoutGuide key="safeArea" id="zg4-la-QNX"/>
                     </view>
                     <connections>
+                        <outlet property="channelNameLbl" destination="TxN-Cq-PvO" id="Jn6-IO-458"/>
                         <outlet property="hamBurgerBtn" destination="I0A-kq-oap" id="z8v-8b-mo5"/>
                     </connections>
                 </viewController>

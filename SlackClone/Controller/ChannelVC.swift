@@ -52,7 +52,9 @@ class ChannelVC: UIViewController {
             self.profileImageView.image = UIImage(named: "profileDefault")
             self.loginBtn.setTitle("Login", for: .normal)
             self.profileImageView.backgroundColor = UIColor.clear
+            
         }
+        self.myTableView.reloadData()
     }
     
     @objc func userStateChanged(_ notif:Notification) {
@@ -75,9 +77,19 @@ class ChannelVC: UIViewController {
     
     @IBAction func addChannelBtnPrssd(_ sender: Any) {
         
-        let channelVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "addChannelVC") as! ADdChannelVC
-        channelVC.modalPresentationStyle = .custom
-        present(channelVC, animated: true, completion: nil)
+        if AuthService.sharedInstance.isLoggedIn {
+            let channelVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "addChannelVC") as! ADdChannelVC
+            channelVC.modalPresentationStyle = .custom
+            present(channelVC, animated: true, completion: nil)
+        }else{
+            
+            let alert = UIAlertController(title: "Please Login In", message: "You can add new channels only if you Log In", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+        }
+        
+        
         
     }
     
@@ -114,6 +126,12 @@ extension ChannelVC:UITableViewDelegate,UITableViewDataSource {
         }else{
             return ChannelCell()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        MessagingService.sharedInstance.selectedChannel = MessagingService.sharedInstance.channels[indexPath.row]
+        NotificationCenter.default.post(name: NOTIF_CHANNEL_SELECTED, object: nil)
+        revealViewController().revealToggle(animated: true)
     }
 }
 

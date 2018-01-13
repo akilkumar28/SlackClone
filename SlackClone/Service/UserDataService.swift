@@ -73,6 +73,7 @@ class UserDataService {
         avatarName = ""
         email = ""
         name = ""
+        MessagingService.sharedInstance.clearAllchannels()
         
     }
     

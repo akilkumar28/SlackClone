@@ -18,6 +18,7 @@ class MessagingService {
     
     
     var channels = [Channel]()
+    var selectedChannel:Channel?
     
     
     func getAllChannels(completion:@escaping CompletionHandler) {
@@ -45,10 +46,11 @@ class MessagingService {
                 completion(false)
             }
         }
-        
-        
+ 
     }
     
-    
-    
+    func clearAllchannels() {
+        channels.removeAll()
+    }
+
 }
