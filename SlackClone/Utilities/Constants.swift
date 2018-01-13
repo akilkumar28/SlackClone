@@ -15,6 +15,8 @@ typealias CompletionHandler = (_ Success:Bool) -> ()
 
 let NOTIF_USER_DATA_CHANGED = Notification.Name("notificationUserDataChanged")
 let NOTIF_CHANNEL_SELECTED = Notification.Name("notificationChannelSelected")
+let NOTIF_CHANNEL_LOADED = Notification.Name("notificationChannelLoaded")
+
 
 
 //MARK:- Reuse Id
@@ -29,6 +31,8 @@ let URL_LOGIN = "\(BASE_URL)account/login"
 let URL_CREATE_USER = "\(BASE_URL)user/add"
 let URL_FIND_USER_BY_EMAIL = "\(BASE_URL)user/byEmail/"
 let URL_FIND_ALL_CHANNEL = "\(BASE_URL)channel"
+let URL_MESSAGES_BY_CHANNEL = "\(BASE_URL)message/byChannel/"
+
 
 //MARK:- Seagues
 let TO_LOGIN = "toLogin"

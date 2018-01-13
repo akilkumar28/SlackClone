@@ -26,14 +26,6 @@ class AuthService {
         }
         set{
             defaults.set(newValue, forKey: LOGGED_IN_KEY)
-            if newValue {
-                MessagingService.sharedInstance.getAllChannels(completion: { (success) in
-                    if success {
-                        print("got all channels")
-                        NotificationCenter.default.post(name: NOTIF_USER_DATA_CHANGED, object: nil)
-                    }
-                })
-            }
         }
     }
     var authToken : String {

@@ -28,6 +28,8 @@ class ChannelVC: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(userStateChanged(_:)), name: NOTIF_USER_DATA_CHANGED, object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(channelsLoaded), name: NOTIF_CHANNEL_LOADED, object: nil)
+        
         SocketService.sharedInstance.getChannel { (success) in
             if success {
                 self.myTableView.reloadData()
@@ -42,7 +44,9 @@ class ChannelVC: UIViewController {
     }
     
     //MARK:- Functions
-    
+    @objc func channelsLoaded() {
+        self.myTableView.reloadData()
+    }
     fileprivate func setUpUser() {
         if AuthService.sharedInstance.isLoggedIn {
             self.profileImageView.image = UIImage(named: UserDataService.sharedInstance.avatarName)
@@ -52,9 +56,9 @@ class ChannelVC: UIViewController {
             self.profileImageView.image = UIImage(named: "profileDefault")
             self.loginBtn.setTitle("Login", for: .normal)
             self.profileImageView.backgroundColor = UIColor.clear
+            self.myTableView.reloadData()
             
         }
-        self.myTableView.reloadData()
     }
     
     @objc func userStateChanged(_ notif:Notification) {
