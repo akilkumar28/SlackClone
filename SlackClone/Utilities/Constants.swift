@@ -18,6 +18,7 @@ let NOTIF_USER_DATA_CHANGED = Notification.Name("notificationUserDataChanged")
 //MARK:- Reuse Id
 
 let collectionViewCellID = "collectionCell"
+let tableViewCellID = "channelCell"
 
 //MARK:- URL
 let BASE_URL = "https://slackclone28.herokuapp.com/v1/"

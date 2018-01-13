@@ -12,6 +12,7 @@ class ChannelVC: UIViewController {
     
     //MARK:- IBOutlets
     
+    @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var profileImageView: RoundedImageView!
     
@@ -19,6 +20,9 @@ class ChannelVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        myTableView.delegate = self
+        myTableView.dataSource = self
         
         self.revealViewController().rearViewRevealWidth = self.view.frame.width - 60
         
@@ -67,9 +71,38 @@ class ChannelVC: UIViewController {
         
     }
     
+    
+    //MARK:- Deint
+    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-    
-
 }
+
+
+
+extension ChannelVC:UITableViewDelegate,UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return MessagingService.sharedInstance.channels.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellID) as? ChannelCell {
+            let channel = MessagingService.sharedInstance.channels[indexPath.row]
+            cell.configureCell(channel: channel)
+            return cell
+        }else{
+            return ChannelCell()
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
