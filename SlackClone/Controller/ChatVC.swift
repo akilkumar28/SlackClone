@@ -13,11 +13,14 @@ class ChatVC: UIViewController {
     //MARK:- IBOutlets
     @IBOutlet weak var hamBurgerBtn: UIButton!
     @IBOutlet weak var channelNameLbl: UILabel!
+    @IBOutlet weak var messageTxtFld: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.view.bindToKeyboard()
         hamBurgerBtn.addTarget(self.revealViewController(),action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        view.addGestureRecognizer(tapGesture)
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
         
@@ -34,6 +37,10 @@ class ChatVC: UIViewController {
     }
     
     //MARK:- Functions
+    
+    @objc func handleTap() {
+        self.view.endEditing(true)
+    }
     
     @objc func userDataDidChange(){
         if AuthService.sharedInstance.isLoggedIn {
@@ -77,6 +84,28 @@ class ChatVC: UIViewController {
         }
         
     }
+    
+    //MARK:- IBActions
+    
+    @IBAction func sendBtnTapped(_ sender: Any) {
+        
+        if AuthService.sharedInstance.isLoggedIn {
+            guard let selectedChannel = MessagingService.sharedInstance.selectedChannel else {return}
+            guard let messageBody = messageTxtFld.text, messageBody != "" else {return}
+            
+            SocketService.sharedInstance.addMessage(messageBody: messageBody, userId: UserDataService.sharedInstance.id, channelId: selectedChannel.id, completion: { (success) in
+                if success {
+                    self.messageTxtFld.text = ""
+                    self.view.endEditing(true)
+                    
+                }else{
+                    print("sending message failed")
+                }
+            })
+        }
+        
+    }
+    
     
 }
 
