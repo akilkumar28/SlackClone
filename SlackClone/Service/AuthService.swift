@@ -123,5 +123,33 @@ class AuthService {
             }
         }
 
-    }    
+    }
+    
+    
+    func findUserByEmail(completion:@escaping CompletionHandler) {
+        
+        let header = [
+            "Authorization":"Bearer \(AuthService.sharedInstance.authToken)",
+            "Content-Type":"application/json; charset = utf-8"
+        ]
+
+        Alamofire.request("\(URL_FIND_USER_BY_EMAIL)\(userEmail)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: header).responseJSON { (response) in
+            if response.result.error == nil {
+                guard let data = response.data else {return}
+                guard let json = try? JSON(data: data) else {return}
+                let jname = json["name"].stringValue
+                let jemail = json["email"].stringValue
+                let jid = json["_id"].stringValue
+                let javatarName = json["avatarName"].stringValue
+                let javatarColor = json["avatarColor"].stringValue
+                UserDataService.sharedInstance.setUserData(id: jid, color: javatarColor, avatarName: javatarName, email: jemail, name: jname)
+                AuthService.sharedInstance.isLoggedIn = true
+                completion(true)
+            }else{
+                debugPrint(response.result.error as Any)
+                completion(false)
+            }
+        }
+    }
+      
 }

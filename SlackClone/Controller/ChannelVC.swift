@@ -26,9 +26,14 @@ class ChannelVC: UIViewController {
 
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setUpUser()
+    }
+    
     //MARK:- Functions
     
-    @objc func userStateChanged(_ notif:Notification) {
+    fileprivate func setUpUser() {
         if AuthService.sharedInstance.isLoggedIn {
             self.profileImageView.image = UIImage(named: UserDataService.sharedInstance.avatarName)
             self.loginBtn.setTitle(UserDataService.sharedInstance.name, for: .normal)
@@ -38,6 +43,10 @@ class ChannelVC: UIViewController {
             self.loginBtn.setTitle("Login", for: .normal)
             self.profileImageView.backgroundColor = UIColor.clear
         }
+    }
+    
+    @objc func userStateChanged(_ notif:Notification) {
+        setUpUser()
     }
     
     //MARK:- IBActions
