@@ -25,6 +25,8 @@
 		89A446FF2009EE1700FCC38A /* MessagingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A446FE2009EE1700FCC38A /* MessagingService.swift */; };
 		89A447012009EE4A00FCC38A /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A447002009EE4A00FCC38A /* Channel.swift */; };
 		89A44703200A0E9700FCC38A /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A44702200A0E9700FCC38A /* ChannelCell.swift */; };
+		89A44705200A1E7300FCC38A /* ADdChannelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A44704200A1E7300FCC38A /* ADdChannelVC.swift */; };
+		89A44707200A280600FCC38A /* SocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A44706200A280600FCC38A /* SocketService.swift */; };
 		89EBD47A200696DE0096B3D0 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EBD479200696DE0096B3D0 /* SignUpVC.swift */; };
 		89EBD47D200741030096B3D0 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EBD47C200741030096B3D0 /* AuthService.swift */; };
 		89EBD47F200755B90096B3D0 /* RoundedButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EBD47E200755B90096B3D0 /* RoundedButtons.swift */; };
@@ -56,6 +58,8 @@
 		89A446FE2009EE1700FCC38A /* MessagingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingService.swift; sourceTree = "<group>"; };
 		89A447002009EE4A00FCC38A /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		89A44702200A0E9700FCC38A /* ChannelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
+		89A44704200A1E7300FCC38A /* ADdChannelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADdChannelVC.swift; sourceTree = "<group>"; };
+		89A44706200A280600FCC38A /* SocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketService.swift; sourceTree = "<group>"; };
 		89EBD479200696DE0096B3D0 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		89EBD47C200741030096B3D0 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		89EBD47E200755B90096B3D0 /* RoundedButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButtons.swift; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 				89EBD479200696DE0096B3D0 /* SignUpVC.swift */,
 				892DD73F20077F3D001CF044 /* AvatarPickerVC.swift */,
 				89F154332007CC2C002B89CD /* ProfileViewVC.swift */,
+				89A44704200A1E7300FCC38A /* ADdChannelVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -178,6 +183,7 @@
 				89EBD47C200741030096B3D0 /* AuthService.swift */,
 				892DD73D20076972001CF044 /* UserDataService.swift */,
 				89A446FE2009EE1700FCC38A /* MessagingService.swift */,
+				89A44706200A280600FCC38A /* SocketService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -324,11 +330,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89A44707200A280600FCC38A /* SocketService.swift in Sources */,
 				89A446FF2009EE1700FCC38A /* MessagingService.swift in Sources */,
 				89A44703200A0E9700FCC38A /* ChannelCell.swift in Sources */,
 				89EBD47A200696DE0096B3D0 /* SignUpVC.swift in Sources */,
 				892DD74020077F3D001CF044 /* AvatarPickerVC.swift in Sources */,
 				89EBD47F200755B90096B3D0 /* RoundedButtons.swift in Sources */,
+				89A44705200A1E7300FCC38A /* ADdChannelVC.swift in Sources */,
 				89A447012009EE4A00FCC38A /* Channel.swift in Sources */,
 				89F154352007CC2C002B89CD /* ProfileViewVC.swift in Sources */,
 				8986ACA42006250200D4E325 /* ChannelVC.swift in Sources */,

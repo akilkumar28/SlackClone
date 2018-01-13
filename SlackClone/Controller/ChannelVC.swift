@@ -27,6 +27,12 @@ class ChannelVC: UIViewController {
         self.revealViewController().rearViewRevealWidth = self.view.frame.width - 60
         
         NotificationCenter.default.addObserver(self, selector: #selector(userStateChanged(_:)), name: NOTIF_USER_DATA_CHANGED, object: nil)
+        
+        SocketService.sharedInstance.getChannel { (success) in
+            if success {
+                self.myTableView.reloadData()
+            }
+        }
 
     }
     
@@ -66,6 +72,19 @@ class ChannelVC: UIViewController {
             performSegue(withIdentifier: TO_LOGIN, sender: nil)
         }
     }
+    
+    @IBAction func addChannelBtnPrssd(_ sender: Any) {
+        
+        let channelVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "addChannelVC") as! ADdChannelVC
+        channelVC.modalPresentationStyle = .custom
+        present(channelVC, animated: true, completion: nil)
+        
+    }
+    
+    
+    
+    
+    
     
     @IBAction func unwindFromSignUpVC(sender:UIStoryboardSegue){
         
