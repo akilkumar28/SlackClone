@@ -23,6 +23,7 @@ let NOTIF_CHANNEL_LOADED = Notification.Name("notificationChannelLoaded")
 
 let collectionViewCellID = "collectionCell"
 let tableViewCellID = "channelCell"
+let messageCellID = "messageCell"
 
 //MARK:- URL
 let BASE_URL = "https://slackclone28.herokuapp.com/v1/"

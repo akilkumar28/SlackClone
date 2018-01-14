@@ -14,9 +14,12 @@ class ChatVC: UIViewController {
     @IBOutlet weak var hamBurgerBtn: UIButton!
     @IBOutlet weak var channelNameLbl: UILabel!
     @IBOutlet weak var messageTxtFld: UITextField!
+    @IBOutlet weak var messageTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        messageTableView.delegate = self
+        messageTableView.dataSource = self
         self.view.bindToKeyboard()
         hamBurgerBtn.addTarget(self.revealViewController(),action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
@@ -77,6 +80,8 @@ class ChatVC: UIViewController {
         guard let channelId = MessagingService.sharedInstance.selectedChannel?.id else {return}
         MessagingService.sharedInstance.getAllMessagesForChannel(channelId: channelId) { (success) in
             if success {
+                print(Thread.isMainThread)
+                self.messageTableView.reloadData()
                 print("succesfully got messages for a selected channel")
             }else{
                 print("failed to get messages for a selected channel.")
@@ -106,6 +111,28 @@ class ChatVC: UIViewController {
         
     }
     
+    //MARK:- Deinit
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }
 
+
+extension ChatVC:UITableViewDelegate,UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return MessagingService.sharedInstance.messages.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if let cell = tableView.dequeueReusableCell(withIdentifier: messageCellID) as? MessageCell {
+            let message = MessagingService.sharedInstance.messages[indexPath.row]
+            cell.configureCell(message: message)
+            return cell
+        }else{
+            return MessageCell()
+        }
+    }   
+}
