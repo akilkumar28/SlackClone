@@ -74,7 +74,7 @@ class UserDataService {
         email = ""
         name = ""
         MessagingService.sharedInstance.clearAllchannels()
-        
+        MessagingService.sharedInstance.clearAllMessages()
     }
     
 }

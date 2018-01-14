@@ -15,9 +15,22 @@ class ChatVC: UIViewController {
     @IBOutlet weak var channelNameLbl: UILabel!
     @IBOutlet weak var messageTxtFld: UITextField!
     @IBOutlet weak var messageTableView: UITableView!
+    @IBOutlet weak var sendBtn: UIButton!
+    @IBOutlet weak var currentIsTypingLbl: UILabel!
+    
+    
+    //MARK:- Properties
+    
+    var isTyping = false
+    
+    //MARK:- Default methods
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        messageTableView.estimatedRowHeight = 110
+        messageTableView.rowHeight = UITableViewAutomaticDimension
+        sendBtn.isHidden = true
         messageTableView.delegate = self
         messageTableView.dataSource = self
         self.view.bindToKeyboard()
@@ -37,6 +50,43 @@ class ChatVC: UIViewController {
                 }
             })
         }
+        
+        SocketService.sharedInstance.getMessage { (Success) in
+            if Success {
+                self.messageTableView.reloadData()
+                if MessagingService.sharedInstance.messages.count > 0 {
+                    let indexPath = IndexPath(row: (MessagingService.sharedInstance.messages.count) -  1, section: 0)
+                    self.messageTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                }
+            }
+        }
+        
+        
+        SocketService.sharedInstance.getTypingusers { (typingUsers) in
+            var names = ""
+            var numberOfTypers = 0
+            guard let currentChannelId = MessagingService.sharedInstance.selectedChannel?.id else {return}
+            for (user,id) in typingUsers {
+                if user != UserDataService.sharedInstance.name && currentChannelId == id {
+                    if names == "" {
+                        names = user
+                    }else{
+                        names = "\(names), \(user)"
+                    }
+                    numberOfTypers += 1
+                }
+            }
+            
+            if numberOfTypers > 0 && AuthService.sharedInstance.isLoggedIn {
+                var verb = "is"
+                if numberOfTypers > 1 {
+                    verb = "are"
+                }
+                self.currentIsTypingLbl.text = "\(names) \(verb) typing a message..."
+            }else{
+                self.currentIsTypingLbl.text = ""
+            }
+        }
     }
     
     //MARK:- Functions
@@ -50,6 +100,7 @@ class ChatVC: UIViewController {
             onLoginGetMessages()
         }else{
             self.channelNameLbl.text = "Please Log In"
+            self.messageTableView.reloadData()
         }
     }
     
@@ -80,7 +131,6 @@ class ChatVC: UIViewController {
         guard let channelId = MessagingService.sharedInstance.selectedChannel?.id else {return}
         MessagingService.sharedInstance.getAllMessagesForChannel(channelId: channelId) { (success) in
             if success {
-                print(Thread.isMainThread)
                 self.messageTableView.reloadData()
                 print("succesfully got messages for a selected channel")
             }else{
@@ -88,6 +138,11 @@ class ChatVC: UIViewController {
             }
         }
         
+    }
+    
+    func emitStopType() {
+         guard let channelId = MessagingService.sharedInstance.selectedChannel?.id else {return}
+        SocketService.sharedInstance.socket.emit("stopType", UserDataService.sharedInstance.name,channelId)
     }
     
     //MARK:- IBActions
@@ -102,7 +157,7 @@ class ChatVC: UIViewController {
                 if success {
                     self.messageTxtFld.text = ""
                     self.view.endEditing(true)
-                    
+                    self.emitStopType()
                 }else{
                     print("sending message failed")
                 }
@@ -110,6 +165,23 @@ class ChatVC: UIViewController {
         }
         
     }
+    
+    @IBAction func editingChanged(_ sender: UITextField) {
+        guard let channelId = MessagingService.sharedInstance.selectedChannel?.id else {return}
+        if messageTxtFld.text == "" {
+            isTyping = false
+            sendBtn.isHidden = true
+            emitStopType()
+        }else{
+            if isTyping == false {
+                sendBtn.isHidden = false
+                SocketService.sharedInstance.socket.emit("startType", UserDataService.sharedInstance.name,channelId)
+            }
+            isTyping = true
+        }
+        
+    }
+    
     
     //MARK:- Deinit
     
