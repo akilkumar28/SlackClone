@@ -16,6 +16,10 @@ class ChannelVC: UIViewController {
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var profileImageView: RoundedImageView!
     
+    //MARK:- Properties
+    
+    
+    //MARK:- Default methods
     
     
     override func viewDidLoad() {
@@ -33,6 +37,16 @@ class ChannelVC: UIViewController {
         SocketService.sharedInstance.getChannel { (success) in
             if success {
                 self.myTableView.reloadData()
+            }
+        }
+        
+        SocketService.sharedInstance.getMessage { (newMessage) in
+            if newMessage.channelID != MessagingService.sharedInstance.selectedChannel?.id && AuthService.sharedInstance.isLoggedIn {
+                
+                MessagingService.sharedInstance.unreadChannels.append(newMessage.channelID)
+                
+                self.myTableView.reloadData()
+                
             }
         }
 
@@ -133,7 +147,18 @@ extension ChannelVC:UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        MessagingService.sharedInstance.selectedChannel = MessagingService.sharedInstance.channels[indexPath.row]
+        let channel = MessagingService.sharedInstance.channels[indexPath.row]
+        MessagingService.sharedInstance.selectedChannel = channel
+        
+        if MessagingService.sharedInstance.unreadChannels.count > 0 {
+            MessagingService.sharedInstance.unreadChannels = MessagingService.sharedInstance.unreadChannels.filter({ (someChannelId) -> Bool in
+                return someChannelId != channel.id
+            })
+        }
+        
+        tableView.reloadRows(at: [indexPath], with: .automatic)
+        tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+        
         NotificationCenter.default.post(name: NOTIF_CHANNEL_SELECTED, object: nil)
         revealViewController().revealToggle(animated: true)
     }

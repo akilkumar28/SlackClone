@@ -17,6 +17,7 @@ class SocketService:NSObject {
     var manager:SocketManager!
     var socket:SocketIOClient!
     static let sharedInstance = SocketService()
+
     
     
     private override init(){
@@ -63,7 +64,7 @@ class SocketService:NSObject {
         completion(true)
     }
     
-    func getMessage(completion:@escaping CompletionHandler) {
+    func getMessage(completion:@escaping (_ newMessage:Message) -> Void) {
         
         socket.on("messageCreated") { (dataArray, ack) in
             
@@ -75,15 +76,9 @@ class SocketService:NSObject {
             guard let id = dataArray[6] as? String else {return}
             guard let timeStamp = dataArray[7] as? String else {return}
             
-            if MessagingService.sharedInstance.selectedChannel?.id == channelId && AuthService.sharedInstance.isLoggedIn {
-                
-                let newMessage = Message(message: messageBody, userName: userName, channelID: channelId, userAvatar: userAvatar, userAvatarColor: userAvatarColor, id: id, timeStamp: timeStamp)
-                
-                MessagingService.sharedInstance.messages.append(newMessage)
-                completion(true)
-            } else {
-                completion(false)
-            }
+            let newMessage = Message(message: messageBody, userName: userName, channelID: channelId, userAvatar: userAvatar, userAvatarColor: userAvatarColor, id: id, timeStamp: timeStamp)
+            
+            completion(newMessage)
         }
         
     }

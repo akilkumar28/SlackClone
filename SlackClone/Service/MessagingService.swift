@@ -19,6 +19,7 @@ class MessagingService {
     //MARK:- Properties
     
     var channels = [Channel]()
+    var unreadChannels = [String]()
     var messages = [Message]()
     var selectedChannel:Channel?
     

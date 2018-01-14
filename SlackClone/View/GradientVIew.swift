@@ -11,13 +11,13 @@ import UIKit
 class GradientVIew: UIView {
     
     //MARK:- Properties
-    var topColor:UIColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1) {
+    var topColor:UIColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1) {
         didSet{
             self.setNeedsLayout()
         }
     }
     
-    var bottomColor:UIColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) {
+    var bottomColor:UIColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1) {
         didSet{
             self.setNeedsLayout()
         }

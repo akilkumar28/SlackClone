@@ -21,7 +21,6 @@ class ChatVC: UIViewController {
     
     //MARK:- Properties
     
-    var isTyping = false
     
     //MARK:- Default methods
     
@@ -51,42 +50,44 @@ class ChatVC: UIViewController {
             })
         }
         
-        SocketService.sharedInstance.getMessage { (Success) in
-            if Success {
+        SocketService.sharedInstance.getMessage { (newMessage) in
+            if newMessage.channelID == MessagingService.sharedInstance.selectedChannel?.id && AuthService.sharedInstance.isLoggedIn {
+                MessagingService.sharedInstance.messages.append(newMessage)
                 self.messageTableView.reloadData()
                 if MessagingService.sharedInstance.messages.count > 0 {
                     let indexPath = IndexPath(row: (MessagingService.sharedInstance.messages.count) -  1, section: 0)
-                    self.messageTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
-                }
-            }
-        }
-        
-        
-        SocketService.sharedInstance.getTypingusers { (typingUsers) in
-            var names = ""
-            var numberOfTypers = 0
-            guard let currentChannelId = MessagingService.sharedInstance.selectedChannel?.id else {return}
-            for (user,id) in typingUsers {
-                if user != UserDataService.sharedInstance.name && currentChannelId == id {
-                    if names == "" {
-                        names = user
-                    }else{
-                        names = "\(names), \(user)"
-                    }
-                    numberOfTypers += 1
-                }
+                    self.messageTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)            }
             }
             
-            if numberOfTypers > 0 && AuthService.sharedInstance.isLoggedIn {
-                var verb = "is"
-                if numberOfTypers > 1 {
-                    verb = "are"
+            SocketService.sharedInstance.getTypingusers { (typingUsers) in
+                var names = ""
+                var numberOfTypers = 0
+                guard let currentChannelId = MessagingService.sharedInstance.selectedChannel?.id else {return}
+                for (user,id) in typingUsers {
+                    if user != UserDataService.sharedInstance.name && currentChannelId == id {
+                        if names == "" {
+                            names = user
+                        }else{
+                            names = "\(names), \(user)"
+                        }
+                        numberOfTypers += 1
+                    }
                 }
-                self.currentIsTypingLbl.text = "\(names) \(verb) typing a message..."
-            }else{
-                self.currentIsTypingLbl.text = ""
+                
+                if numberOfTypers > 0 && AuthService.sharedInstance.isLoggedIn {
+                    var verb = "is"
+                    if numberOfTypers > 1 {
+                        verb = "are"
+                    }
+                    self.currentIsTypingLbl.text = "\(names) \(verb) typing a message..."
+                }else{
+                    self.currentIsTypingLbl.text = ""
+                }
             }
         }
+        
+        
+        
     }
     
     //MARK:- Functions
@@ -132,6 +133,10 @@ class ChatVC: UIViewController {
         MessagingService.sharedInstance.getAllMessagesForChannel(channelId: channelId) { (success) in
             if success {
                 self.messageTableView.reloadData()
+                if MessagingService.sharedInstance.messages.count > 0 {
+                    self.messageTableView.scrollToRow(at: IndexPath(row: MessagingService.sharedInstance.messages.count - 1, section: 0), at: .bottom, animated: true)
+                }
+                
                 print("succesfully got messages for a selected channel")
             }else{
                 print("failed to get messages for a selected channel.")
@@ -140,11 +145,7 @@ class ChatVC: UIViewController {
         
     }
     
-    func emitStopType() {
-         guard let channelId = MessagingService.sharedInstance.selectedChannel?.id else {return}
-        SocketService.sharedInstance.socket.emit("stopType", UserDataService.sharedInstance.name,channelId)
-    }
-    
+
     //MARK:- IBActions
     
     @IBAction func sendBtnTapped(_ sender: Any) {
@@ -157,7 +158,8 @@ class ChatVC: UIViewController {
                 if success {
                     self.messageTxtFld.text = ""
                     self.view.endEditing(true)
-                    self.emitStopType()
+                    guard let channelId = MessagingService.sharedInstance.selectedChannel?.id else {return}
+                    SocketService.sharedInstance.socket.emit("stopType", UserDataService.sharedInstance.name,channelId)
                 }else{
                     print("sending message failed")
                 }
@@ -169,17 +171,12 @@ class ChatVC: UIViewController {
     @IBAction func editingChanged(_ sender: UITextField) {
         guard let channelId = MessagingService.sharedInstance.selectedChannel?.id else {return}
         if messageTxtFld.text == "" {
-            isTyping = false
             sendBtn.isHidden = true
-            emitStopType()
+                SocketService.sharedInstance.socket.emit("stopType", UserDataService.sharedInstance.name,channelId)
         }else{
-            if isTyping == false {
-                sendBtn.isHidden = false
-                SocketService.sharedInstance.socket.emit("startType", UserDataService.sharedInstance.name,channelId)
-            }
-            isTyping = true
+            sendBtn.isHidden = false
+            SocketService.sharedInstance.socket.emit("startType", UserDataService.sharedInstance.name,channelId)
         }
-        
     }
     
     
